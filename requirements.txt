@@ -1,6 +1,5 @@
 alabaster==0.7.12
 altair==4.1.0
-anaconda-project @ file:///tmp/build/80754af9/anaconda-project_1610472525955/work
 anyio @ file:///opt/concourse/worker/volumes/live/4ff95164-2ca6-4efb-5c02-5afee907620d/volume/anyio_1617783322708/work/dist
 appdirs==1.4.4
 applaunchservices==0.2.1
