@@ -7,7 +7,9 @@ def load_data():
     Fonction permettant de charger le jeu données contenant les informations clients
     :return: dataframe contenant les infos clients
     """
-    raw_data = pd.read_csv('/Users/louisroques/Desktop/Diplome Data Scientist/Projet 7 - Implémentez un modèle de scoring/Dataset/Projet+Mise+en+prod+-+home-credit-default-risk/application_test.csv')
+    url = 'https://drive.google.com/file/d/1lBO_5ektxTS9Dj6xGhqEY64EFTglXz12/view?usp=sharing'
+    path = 'https://drive.google.com/uc?export=download&id=' + url.split('/')[-2]
+    raw_data = pd.read_csv(path)
     raw_data['DAYS_EMPLOYED'].replace({365243: np.nan}, inplace=True)
     raw_data['CREDIT_INCOME_PERCENT'] = raw_data['AMT_CREDIT'] / raw_data['AMT_INCOME_TOTAL']
     raw_data['ANNUITY_INCOME_PERCENT'] = raw_data['AMT_ANNUITY'] / raw_data['AMT_INCOME_TOTAL']
@@ -20,7 +22,9 @@ def load_data_preprocess():
     Fonction permettant de charger le jeu données contenant les informations clients preprocessées
     :return: dataframe contenant les infos clients préprocessées
     """
-    data = pd.read_csv('/Users/louisroques/Desktop/Diplome Data Scientist/Projet 7 - Implémentez un modèle de scoring/Dataset/application_test_preprocessed.csv')
+    url = 'https://drive.google.com/file/d/1060KLYzDLZe77dCyAjYUVOWsrSQfLHHa/view?usp=sharing'
+    path = 'https://drive.google.com/uc?export=download&id=' + url.split('/')[-2]
+    data = pd.read_csv(path)
     return data
 
 def get_data(number_input1, data_input):
@@ -50,7 +54,9 @@ def load_data_train():
     Fonction permettant de charger le jeu données contenant les informations clients d'entrainement
     :return: dataframe contenant les infos clients
     """
-    app_train = pd.read_csv('/Users/louisroques/Desktop/Diplome Data Scientist/Projet 7 - Implémentez un modèle de scoring/Dataset/Projet+Mise+en+prod+-+home-credit-default-risk/application_train.csv')
+    url = 'https://drive.google.com/file/d/1HCV2MzhJE4y7QbV1l2Z73ABPHRGTDFDf/view?usp=sharing'
+    path = 'https://drive.google.com/uc?export=download&id=' + url.split('/')[-2]
+    app_train = pd.read_csv(path)
     min_count = len(app_train.index) * 0.80
     app_train = app_train.dropna(axis='columns', thresh=min_count)
     app_train['DAYS_EMPLOYED'].replace({365243: np.nan}, inplace=True)
@@ -65,5 +71,7 @@ def load_train_set():
     Fonction permettant de charger le jeu de données d'entrainement du modèle pour visualisation du feature importance
     :return: dataframe contenant le jeu de données d'entrainement du modèle
     """
-    train_set = pd.read_csv('/Users/louisroques/Desktop/Diplome Data Scientist/Projet 7 - Implémentez un modèle de scoring/Dataset/train_set.csv')
+    url = 'https://drive.google.com/file/d/1RpyhrDoXDr_La6V3fLTl3ymikkQsXSjD/view?usp=sharing'
+    path = 'https://drive.google.com/uc?export=download&id=' + url.split('/')[-2]
+    train_set = pd.read_csv(path)
     return train_set

@@ -2,8 +2,7 @@
 import streamlit as st
 from PIL import Image
 
-
-st.title('Dashboard prédiction non solvabilité de prêt')
+st.title('Dashboard capacité de prêt')
 st.subheader('par ROQUES Louis dans le cadre du diplome de Data Scientist')
 
 st.markdown(
@@ -13,7 +12,7 @@ st.markdown(
     """
 )
 
-image = Image.open('/Users/louisroques/Desktop/Diplome Data Scientist/Projet 7 - Implémentez un modèle de scoring/Dataset/photo.jpg')
+image = Image.open('./LouisROQUES/test_dashboard/blob/master/image/photo.jpg')
 st.image(image)
 
 image2 = Image.open('/Users/louisroques/Desktop/Diplome Data Scientist/Projet 7 - Implémentez un modèle de scoring/Dataset/logo.png')
