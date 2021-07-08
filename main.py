@@ -1,4 +1,5 @@
 ### PACKAGES
+import urllib
 import streamlit as st
 from PIL import Image
 
@@ -12,10 +13,14 @@ st.markdown(
     """
 )
 
-image = Image.open('./LouisROQUES/test_dashboard/blob/master/image/photo.jpg')
+urllib.request.urlretrieve(
+    "https://github.com/LouisROQUES/test_dashboard/blob/master/image/photo.jpg?raw=true", "photo.jpg")
+image = Image.open("photo.jpg")
 st.image(image)
 
-image2 = Image.open('/Users/louisroques/Desktop/Diplome Data Scientist/Projet 7 - Implémentez un modèle de scoring/Dataset/logo.png')
+urllib.request.urlretrieve(
+    "https://github.com/LouisROQUES/test_dashboard/blob/master/image/logo.png?raw=true", "logo.png")
+image2 = Image.open('logo.png')
 st.sidebar.image(image2)
 
 client_input = st.number_input('Veuillez renseigner le numéro client SK_ID_CURR', step=1)
