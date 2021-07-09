@@ -54,16 +54,13 @@ def load_data_train():
     Fonction permettant de charger le jeu données contenant les informations clients d'entrainement
     :return: dataframe contenant les infos clients
     """
-    url = 'https://drive.google.com/file/d/1HCV2MzhJE4y7QbV1l2Z73ABPHRGTDFDf/view?usp=sharing'
-    path = 'https://drive.google.com/uc?export=download&id=' + url.split('/')[-2]
-    app_train = pd.read_csv(path)
-    min_count = len(app_train.index) * 0.80
-    app_train = app_train.dropna(axis='columns', thresh=min_count)
-    app_train['DAYS_EMPLOYED'].replace({365243: np.nan}, inplace=True)
-    app_train['CREDIT_INCOME_PERCENT'] = app_train['AMT_CREDIT'] / app_train['AMT_INCOME_TOTAL']
-    app_train['ANNUITY_INCOME_PERCENT'] = app_train['AMT_ANNUITY'] / app_train['AMT_INCOME_TOTAL']
-    app_train['CREDIT_TERM'] = app_train['AMT_ANNUITY'] / app_train['AMT_CREDIT']
-    app_train['DAYS_EMPLOYED_PERCENT'] = app_train['DAYS_EMPLOYED'] / app_train['DAYS_BIRTH']
+    url1 = 'https://drive.google.com/file/d/1Liiw2mZ7Sr2hiw0hm75DGMTMRfMazKj9/view?usp=sharing'
+    path1 = 'https://drive.google.com/uc?export=download&id=' + url1.split('/')[-2]
+    raw_data1 = pd.read_csv(path1)
+    url2 = 'https://drive.google.com/file/d/1arBQJBJ5I-t6ShB8CA6ZTzKtxDuzP58X/view?usp=sharing'
+    path2 = 'https://drive.google.com/uc?export=download&id=' + url2.split('/')[-2]
+    raw_data2 = pd.read_csv(path2)
+    app_train = pd.concat([raw_data1, raw_data2])
     return app_train
 
 def load_train_set():
