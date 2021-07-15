@@ -23,7 +23,7 @@ urllib.request.urlretrieve(
 image2 = Image.open('logo.png')
 st.sidebar.image(image2)
 
-client_input = st.number_input('Veuillez renseigner le numéro client SK_ID_CURR', step=1)
+client_input = st.number_input('Veuillez renseigner le numéro client SK_ID_CURR', value=100001, step=1)
 
 # bouton soumettre pour récupérer récuprer l'id client et récupérer le data
 if st.button('Soumettre id client'):
@@ -65,7 +65,7 @@ if st.button('Soumettre id client'):
 
     st.markdown("Un score **<50%** montre la non capacité de remboursement du prêt")
     st.markdown("Un score **compris entre 50% et 75%** montre des doutes sur la capacité de remboursement du prêt")
-    st.markdown("Un score **>50%** montre la capacité à rembourser le prêt")
+    st.markdown("Un score **>75%** montre la capacité à rembourser le prêt")
 
     #  retourner explicabilité par exemple features importance au niveau prédictione tester package shap ou lime
     # chargement du modèle visualisation

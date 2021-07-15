@@ -15,6 +15,7 @@ def load_data():
     raw_data['ANNUITY_INCOME_PERCENT'] = raw_data['AMT_ANNUITY'] / raw_data['AMT_INCOME_TOTAL']
     raw_data['CREDIT_TERM'] = raw_data['AMT_ANNUITY'] / raw_data['AMT_CREDIT']
     raw_data['DAYS_EMPLOYED_PERCENT'] = raw_data['DAYS_EMPLOYED'] / raw_data['DAYS_BIRTH']
+    raw_data['DAYS_BIRTH'] = raw_data['DAYS_BIRTH'] *-1
     return raw_data
 
 def load_data_preprocess():
@@ -61,6 +62,7 @@ def load_data_train():
     path2 = 'https://drive.google.com/uc?export=download&id=' + url2.split('/')[-2]
     raw_data2 = pd.read_csv(path2)
     app_train = pd.concat([raw_data1, raw_data2])
+    app_train["TARGET"] = app_train["TARGET"].replace([0, 1], ['paiment_ok', 'deafaut_paiement'])
     return app_train
 
 def load_train_set():
