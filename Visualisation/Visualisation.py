@@ -37,7 +37,7 @@ def shap_explaner(data_processed):
     :param data_for_prediction: données clients entrant dans le model
     :return: graphique des shap values
     """
-    mLink = 'https://github.com/LouisROQUES/test_dashboard/blob/master/gbc_model.pkl?raw=true'
+    mLink = 'https://github.com/LouisROQUES/test_dashboard/blob/master/Model/gbc_model.pkl?raw=true'
     mfile = BytesIO(requests.get(mLink).content)
     xgbc_model = joblib.load(mfile)
     # Create object that can calculate shap values
