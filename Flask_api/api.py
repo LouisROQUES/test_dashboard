@@ -20,7 +20,7 @@ def importances():
     Fonction permettant de charger le modèle de prédiction
     :return: modèle
     """
-    mLink = 'https://github.com/LouisROQUES/test_dashboard/blob/master/Model/gbc_model.pkl?raw=true'
+    mLink = 'https://github.com/LouisROQUES/test_dashboard/blob/master/gbc_model.pkl?raw=true'
     mfile = BytesIO(requests.get(mLink).content)
     xgbc_model = joblib.load(mfile)
     importances = xgbc_model.feature_importances_
@@ -33,7 +33,7 @@ def predict_prob(number_input1):
     :param X_test: le vecteur de données pour un individu (liste)
     :return: prédiction de type float
     """
-    mLink = 'https://github.com/LouisROQUES/test_dashboard/blob/master/Model/gbc_model.pkl?raw=true'
+    mLink = 'https://github.com/LouisROQUES/test_dashboard/blob/master/gbc_model.pkl?raw=true'
     mfile = BytesIO(requests.get(mLink).content)
     xgbc_model = joblib.load(mfile)
     url = 'https://drive.google.com/file/d/1060KLYzDLZe77dCyAjYUVOWsrSQfLHHa/view?usp=sharing'
