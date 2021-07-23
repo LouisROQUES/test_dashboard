@@ -1,5 +1,8 @@
 ### PACKAGES
 import urllib
+from urllib import request
+import numpy as np
+import requests
 import streamlit as st
 from PIL import Image
 
@@ -48,15 +51,15 @@ if st.button('Soumettre id client'):
 
     # visualisation des principales informations client
     from Visualisation.Visualisation import main_informations
-
     st.sidebar.header('Informations générales')
     main_informations = main_informations(raw_data_client)
     st.sidebar.write(main_informations)
 
     # afficher predict_proba (loader modèle puis predict, return predict) => retourner explicabilité par exemple features importance da
     # cette fonction permet de charger le modèle et d'effectuer la prediction du score pour l'octroie de prêt
-    from Model.Model import predict_prob
-    prediction = predict_prob(data_client)
+    r = requests.get(f'http://127.0.01:5000/predict_prob/{result}')
+    response = r.json()
+    prediction = np.array(list(response.values()))
 
     # visualisation du score sur une jauge
     from Visualisation.Visualisation import score_vis
@@ -67,15 +70,10 @@ if st.button('Soumettre id client'):
     st.markdown("Un score **compris entre 50% et 75%** montre des doutes sur la capacité de remboursement du prêt")
     st.markdown("Un score **>75%** montre la capacité à rembourser le prêt")
 
-    #  retourner explicabilité par exemple features importance au niveau prédictione tester package shap ou lime
-    # chargement du modèle visualisation
-    from Model.Model import load_model
-    xgbc_model = load_model()
-
     # création des shap value pour explication du score
     from Visualisation.Visualisation import shap_explaner
     st.header('Explicabilité du score')
-    explainer = shap_explaner(xgbc_model, data_client)
+    explainer = shap_explaner(data_client)
     st.pyplot(explainer)
 
     # chargement du jeu de données d'entrainement du modèle
@@ -84,7 +82,10 @@ if st.button('Soumettre id client'):
 
     # récupération des features importances pour visualisation histogramme
     from Visualisation.Visualisation import features_importances
-    most_important_features = features_importances(xgbc_model, train_set)
+    response = requests.get("http://127.0.01:5000/importances")
+    importances = response.json()
+    importances = np.array(list(importances.values()))
+    most_important_features = features_importances(importances, train_set)
 
     # affichage des données client pour les features les plus importantes
     from Visualisation.Visualisation import main_features_informations

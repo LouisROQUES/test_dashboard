@@ -1,3 +1,6 @@
+from io import BytesIO
+import joblib
+import requests
 import shap
 import seaborn as sns
 import plotly.graph_objects as go
@@ -27,28 +30,30 @@ def score_vis(prediction):
                  'threshold' : {'line': {'color': "black", 'width': 4}, 'thickness': 0.75, 'value': 0.99}}))
     return fig
 
-def shap_explaner(my_model, data_processed):
+def shap_explaner(data_processed):
     """
     Fonction permettant de générer des shap values et une visualisation pour l'explicabilité des résultats
     :param my_model: model de prédiction
     :param data_for_prediction: données clients entrant dans le model
     :return: graphique des shap values
     """
+    mLink = 'https://github.com/LouisROQUES/test_dashboard/blob/master/Model/gbc_model.pkl?raw=true'
+    mfile = BytesIO(requests.get(mLink).content)
+    xgbc_model = joblib.load(mfile)
     # Create object that can calculate shap values
-    explainer = shap.TreeExplainer(my_model)
+    explainer = shap.TreeExplainer(xgbc_model)
     # Calculate Shap values
     shap_values = explainer.shap_values(data_processed)
     fig = plt.figure()
     shap.summary_plot(shap_values, data_processed)
     return fig
 
-def features_importances(my_model, train_set):
+def features_importances(importances, train_set):
     """
     Fonction permettant de générer les 5 features les plus importantes du model
     :param my_model: model de prediction
     :return: liste des 5 features les plus importantes
     """
-    importances = my_model.feature_importances_
     feature_names = list(train_set.head(0))
     feature_importances = pd.Series(importances, index=feature_names)
     fi_model = pd.DataFrame(feature_importances)

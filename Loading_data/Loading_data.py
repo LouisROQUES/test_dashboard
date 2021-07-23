@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-
 def load_data():
     """
     Fonction permettant de charger le jeu données contenant les informations clients
@@ -62,7 +61,7 @@ def load_data_train():
     path2 = 'https://drive.google.com/uc?export=download&id=' + url2.split('/')[-2]
     raw_data2 = pd.read_csv(path2)
     app_train = pd.concat([raw_data1, raw_data2])
-    app_train["TARGET"] = app_train["TARGET"].replace([0, 1], ['paiment_ok', 'deafaut_paiement'])
+    app_train["TARGET"] = app_train["TARGET"].replace([0, 1], ['paiement_ok', 'defaut_paiement'])
     return app_train
 
 def load_train_set():
