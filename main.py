@@ -57,7 +57,7 @@ if st.button('Soumettre id client'):
 
     # afficher predict_proba (loader modèle puis predict, return predict) => retourner explicabilité par exemple features importance da
     # cette fonction permet de charger le modèle et d'effectuer la prediction du score pour l'octroie de prêt
-    r = requests.get(f'http://127.0.01:5000/predict_prob/{result}')
+    r = requests.get(f'https://api-project7.herokuapp.com/predict_prob/{result}')
     response = r.json()
     prediction = np.array(list(response.values()))
 
@@ -82,7 +82,7 @@ if st.button('Soumettre id client'):
 
     # récupération des features importances pour visualisation histogramme
     from Visualisation.Visualisation import features_importances
-    response = requests.get("http://127.0.01:5000/importances")
+    response = requests.get("https://api-project7.herokuapp.com/importances")
     importances = response.json()
     importances = np.array(list(importances.values()))
     most_important_features = features_importances(importances, train_set)
