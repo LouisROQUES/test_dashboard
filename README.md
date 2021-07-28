@@ -26,15 +26,17 @@ Le modèle utilisé est un modèle GradientBoostingClassifier, une recherche du 
 
 ## App
 
-Une app sous forme de dashboard interactif a été développé avec Streamlit. Ce dashboard permet à partir d'un numéro client de recherche les informations de celui-ci ainsi que de prédire une probabilité de remboursement d'un prêt. Ensuite des graphiques sont générés pour expliquer le score obtenu et, une visualisation des informations client importantes comparés aux "bons payeurs" et aux "mauvais payeurs". 
+Une app sous forme de dashboard interactif a été développée avec Streamlit. Ce dashboard permet à partir d'un numéro client de rechercher les informations de celui-ci, ainsi que de prédire une probabilité de remboursement d'un prêt. Ensuite des graphiques sont générés pour expliquer le score obtenu et, une visualisation des informations client importantes comparés aux "bons payeurs" et aux "mauvais payeurs". 
 
-Pour cette applications, les images et le modèle sont chargées de streamlit, et les datasets sont chargés de Google Drive, GitHub ne permettant pas d'héberger des fichiers aussi volumineux. 
+Pour cette applications, les images et le modèle sont chargées de github, et les datasets sont chargés de Google Drive, GitHub ne permettant pas d'héberger des fichiers aussi volumineux. 
 
-Les différentes fonctions de cette applications sont présentes dans des modules séparés:
+Les différentes fonctions de cette application sont présentes dans des modules séparés:
 - Loading_data ; chargements des différentes dataset
 - Flask API : chargement de modèle, et prédiction du score
 - Visualisation : génération de graphiques ou de tableaux de données
 - Main : reprend les différentes fonctions en intégrant du streamlit pour obtenir une interface web simplifiée
+
+Il existe un github spécifique à l'API car il y a la nécessité de déployer l'API d'une part et le dashboard d'autre part. Le déploiement s'est effectué sur Heroku.
 
 ![image](https://user-images.githubusercontent.com/85115714/127287382-57637635-8109-4d50-b5c1-2a4ead6e29df.png)
 
