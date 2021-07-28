@@ -32,9 +32,14 @@ Pour cette applications, les images et le modèle sont chargées de streamlit, e
 
 Les différentes fonctions de cette applications sont présentes dans des modules séparés:
 - Loading_data ; chargements des différentes dataset
-- Model : chargement de modèle, et prédiction du score
+- Flask API : chargement de modèle, et prédiction du score
 - Visualisation : génération de graphiques ou de tableaux de données
 - Main : reprend les différentes fonctions en intégrant du streamlit pour obtenir une interface web simplifiée
+
+![image](https://user-images.githubusercontent.com/85115714/127287382-57637635-8109-4d50-b5c1-2a4ead6e29df.png)
+
+![image](https://user-images.githubusercontent.com/85115714/127287461-fa36c006-b8d9-4426-950e-34d4268882a7.png)
+
 
 
 
